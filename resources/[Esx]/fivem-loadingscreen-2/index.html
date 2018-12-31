@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Don't mind the mess.
+
+********************************************************************
+CONTACT: @Skypo
+********************************************************************
+FiveM: https://forum.fivem.net/u/Skypo
+Github: https://github.com/OfficialSkypo
+Discord: https://discord.gg/ZRr7rcE
+Youtube: https://www.youtube.com/channel/UCvyOpEifWxdTgsnWNFOIxjA
+Twitter: https://twitter.com/OfficialSkypo 
+
+!-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	
+    <title>CONNECTING TO SERVER</title>				    
+<style type="text/css">
+body { color: #ffffff; background: #000000; }
+</style>
+
+<!-- CSS Style for the background slider -->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<header>
+<!-- Infobox -->
+<div id="infobox"><p style="position: absolute; top: 80px; right: 20px;">
+<img class="infoboxslide" src="infobox/1.png">
+<img class="infoboxslide" src="infobox/2.png">
+<img class="infoboxslide " src="infobox/3.png">
+<img class="infoboxslide" src="infobox/4.png">
+</p></div>
+<!-- END INFOBOX -->
+
+			<!-- Loader (for some reason this refuses to use CSS) -->
+<div id="loading"><p style="position: absolute; right: 20px; bottom: -5px; border:1px; border-style:solid; border-color:#000000; background: #000000; padding: 0.5em; width: 260px; opacity: 0.85;"><font face="verdana" size="4">Chargement de TaLife</font><font color="#000000">#</font><img src="img/loading.gif" style="width:20px;height:20px;"></p></div>
+			<!-- END LOADER -->
+
+			<!-- Logo (for some reason this refuses to use CSS) -->
+<div id="logo"><p style="position: absolute; left: -0px; bottom: -15px;"><img src="img/logo.png"></p></div>
+			<!-- END LOGO -->
+
+			<!-- Background music -->
+    	<div style="display:none"><audio controls id="audio" autoplay="autoplay" onloadeddata="setHalfVolume()">
+	<source src="music/loadscreen.mp3" type="audio/mpeg"> <!-- INSERT MUSICA HAIRE -->
+	Music has stopped working.
+	</audio>
+<script>	function setHalfVolume() {
+    var myAudio = document.getElementById("audio");  
+    myAudio.volume = 10%; //Changed this to 0.5 or 50% volume since the function is called Set Half Volume ;)
+}</script></div>
+	        <!-- END BACKGROUND MUSIC -->
+
+			<!-- Infobox slider -->
+<script>			var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("infoboxslide");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 10000); // Change image every 10 seconds
+}
+</script>
+<!-- END INFOBOX SLIDER -->			
+			
+<!-- Background Slider -->
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/jquery.backstretch.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.ajaxchimp.js"></script>
+  <script src="js/lj-safety-first.js"></script>
+  <!-- END BACKGROUND SLIDER -->
+
+<!-- Loadscreen time out -->
+    <script>
+        var timer = setTimeout(function() {
+            window.location='timeout.html' <!-- redirection path -->
+        }, 141000); <!-- Time out in milliseconds before redirect -->
+    </script>
+	        <!-- END LOADSCREEN TIME OUT -->  
+  </body>
+</html>

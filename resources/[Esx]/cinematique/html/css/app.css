@@ -1,0 +1,9 @@
+html { 
+	background: url('../img/image.png') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: none;
+	filter: grayscale(100%);
+}

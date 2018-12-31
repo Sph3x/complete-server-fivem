@@ -1,0 +1,251 @@
+{
+  "reseau": "Aféction Télécom",
+  
+  "themeColor": "#303f9f",
+  "colors": [
+    "#EF5350",
+    "#EC407A",
+    "#AB47BC",
+    "#7E57C2",
+    "#5C6BC0",
+    "#42A5F5",
+    "#29B6F6",
+    "#26C6DA",
+    "#26A69A",
+    "#66BB6A",
+    "#9CCC65",
+    "#D4E157",
+    "#FFCA28",
+    "#FFA726",
+    "#FF7043",
+    "#8D6E63",
+    "#78909C"
+  ],
+
+  "useFormatNumberFrance": false,
+
+  "useWebRTCVocal": false,
+  "RTCConfig": {
+    "iceServers": [{
+      "urls": ["turn:gannon.ovh"],
+      "username": "jojo",
+      "credential": "pass"
+    }]
+  },
+
+
+  "background" : {
+    "Porsche GT2 RS": "back001.jpg",
+    "Custom URL": "URL"
+  },
+  "background_default": {
+    "label": "Porsche GT2 RS",
+    "value": "back001.jpg"
+  },
+
+
+  "coque": {
+    "Sansumg S8": "s8.png",
+    "Iphone X": "iphonex.png"
+  },
+  "coque_default": {
+    "label": "Iphone X",
+    "value": "iphonex.png"
+  },
+
+
+  "serviceCall": [
+    {
+      "display": "LSPD",
+      "icon": "/html/static/img/icons_app/policier.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "police"
+          }
+        }
+      ]
+    },
+    {
+      "display": "Mécano",
+      "icon": "/html/static/img/icons_app/mecano.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mecano"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Taxi",
+      "icon": "/html/static/img/icons_app/taxi.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "taxi"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Concessionnaire",
+      "icon": "/html/static/img/icons_app/conces.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "cardealer"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Justice",
+      "icon": "/html/static/img/icons_app/avocat.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "avocat"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Epicerie",
+      "icon": "/html/static/img/icons_app/epicerie.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "epicerie"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Unicorn",
+      "icon": "/html/static/img/icons_app/unicorn.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "unicorn"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Brinks",
+      "icon": "/html/static/img/icons_app/brinks.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "brinks"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Bahamas",
+      "icon": "/html/static/img/icons_app/bahama.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mamas"
+          }
+        }
+      ]
+    },
+	{
+      "display": "Journaliste",
+      "icon": "/html/static/img/icons_app/journaliste.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "journaliste"
+          }
+        }
+      ]
+    },
+    {
+      "display": "Ambulance",
+      "icon": "/html/static/img/icons_app/ambulancier.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "ambulance"
+          }
+        }
+      ]
+    }
+  ],
+
+  "apps": [
+    {
+      "name": "Téléphone",
+      "icons": "/html/static/img/icons_app/call.png",
+      "routeName": "appels",
+      "inHomePage": true
+    },
+    {
+      "name": "Messages",
+      "icons": "/html/static/img/icons_app/sms.png",
+      "routeName": "messages",
+      "inHomePage": true,
+      "puceRef": "nbMessagesUnread"
+    },
+    {
+      "name": "Contacts",
+      "icons": "/html/static/img/icons_app/contacts.png",
+      "routeName": "contacts",
+      "inHomePage": true
+    },
+    {
+      "name": "Paramètres",
+      "icons": "/html/static/img/icons_app/settings.png",
+      "routeName": "parametre",
+      "inHomePage": true
+    },
+    {
+      "name": "Bourse",
+      "icons": "/html/static/img/icons_app/bourse.png",
+      "routeName": "bourse",
+      "enabled": true
+    },
+    {
+      "name": "Photo",
+      "icons": "/html/static/img/icons_app/photo.png",
+      "routeName": "photo"
+    },
+    {
+      "name": "Dark Chat",
+      "icons": "/html/static/img/icons_app/tchat.png",
+      "routeName": "tchat"
+    },
+    {
+      "name": "9GAG",
+      "icons": "/html/static/img/icons_app/9gag.png",
+      "routeName": "9gag"
+    }
+  ]
+}

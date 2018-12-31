@@ -1,0 +1,87 @@
+/*
+    esx_ladderhud
+    Copyright C 2018  MarmotaGit
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    at your option any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+.container-fluid {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    right: 1.5vw;
+    bottom: 0;
+    transition: right 1.0s;
+}
+
+.container {
+    display: inline-block;
+}
+.circle {
+    height: 2.5vw;
+    width: 2.5vw;
+    background-color: #2e2e2f;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 2vw 2vw;
+    background-position: center;
+}
+#circle-hunger {
+    background-image: url("https://image.flaticon.com/icons/svg/1046/1046784.svg");
+    border: 0.1vw #D35400 solid;
+    float: right;
+}
+#circle-thirst {
+    background-image: url("https://image.flaticon.com/icons/svg/883/883327.svg");
+    border: 0.1vw #2980B9 solid;
+    margin-right: 8vw;
+    float: right;
+}
+.progress {
+    position: absolute;
+    z-index: -1;
+    height: 0.7vw;
+    width: 9vw;
+    border-radius: 0.5vw;
+    background-color: #2e2e2f;
+}
+#progress-hunger {
+    margin-top: 1.5vw;
+    margin-right: 1.4vw;
+    border-radius: 0.5vw;
+    border: 0.1vw #D35400 solid;
+    right: 0.4vw;
+}
+
+#progress-thirst {
+    margin-left:1.7vw;
+    margin-top: 0.5vw;
+    border: 0.1vw #2980B9 solid;
+
+}
+.field {
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
+    width: 100%;
+    border-radius: 0.5vw;
+    transition: width 1.0s;
+}
+#hunger {
+    float: right;
+    vertical-align: center;
+    background-color: #E67E22;
+}
+#thirst {
+    float: left;
+    background-color: #3498DB ;
+}

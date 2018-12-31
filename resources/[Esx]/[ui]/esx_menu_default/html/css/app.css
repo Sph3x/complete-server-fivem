@@ -1,0 +1,139 @@
+@font-face {
+  font-family: bankgothic;
+  src: url('../fonts/bankgothic.ttf');
+}
+
+@font-face {
+  font-family: pcdown;
+  src: url('../fonts/pdown.ttf');
+}
+
+@font-face {
+  font-family: Aero;
+  src: url('../fonts/Aero.ttf');
+}
+
+@font-face {
+  font-family: Code;
+  src: url('../fonts/CODE_bold.otf');
+}
+
+.menu {	
+  border-color: black;
+  border-style: solid;
+  /* border-bottom-left-radius : 0px 0px;
+  border-bottom-right-radius : 0px 0px;	 */
+  /* border-radius: 20px;			 */
+  font-family: bankgothic;  
+  min-width  : 350px;
+  /* box-shadow : 0px 0px 50px 0px #000; */
+  position   : absolute;
+}
+
+.menu.align-left {
+  left: 45px;
+  top : 50%;
+  transform: translate(0, -50%); 
+}
+
+.menu.align-top-left {
+  left: 47px;
+  top : 60px;   
+}
+
+.menu.align-top-haut {
+  left: 47px;
+  top : 40px;  
+}
+
+.menu.align-top {
+  left: 50%;
+  top : 60px;
+  transform: translate(-50%, 0); 
+}
+
+.menu.align-top-right {
+  right: 10px;
+  top  : 60px;
+}
+
+.menu.align-right {
+  right: 45px;
+  top  : 50%;
+  transform: translate(0, -50%); 
+}
+
+.menu.align-bottom-right {
+  left: 45px;
+  top : 60px;
+}
+
+.menu.align-bottom {
+  left  : 50%;
+  bottom: 40px;
+  transform: translate(-50%, 0); 
+}
+
+.menu.align-bottom-left {
+  left  : 45px;
+  bottom: 40px;
+}
+
+.menu.align-center {
+  left : 50%;
+  top  : 50%;
+  transform: translate(-50%, -50%); 
+}
+
+.menu .head {	
+  font-size: 0%;
+  color: white;
+  /* border-top-left-radius : 15px 15px;
+  border-top-right-radius : 15px 15px; */
+  background:url('http://image.noelshack.com/fichiers/2018/51/7/1545568737-snakebleutriangle.png');
+  background-size: cover ;
+  background-repeat: no-repeat;
+  text-align      : center;
+  height          : 85px;
+  line-height     : 70px;
+}
+
+.menu .text {
+  font-family: Aero;
+  height          : 40px;
+  display         : block;
+  background-color: rgba(40, 24, 114, 0.774);
+  /* box-shadow      : inset 1px 1px 1px 1px #b8b8b8; */
+  height          : 38px;
+  line-height     : 38px;
+   text-align   : center; 
+  color           : white;
+  /* text-shadow: 0 0 30px #FFFFFF, 0px 1px 30px #FDA700; */
+  font-weight: bold;
+}
+
+.menu .menu-items {	 
+  /* border-bottom-left-radius : 20px 20px;
+  border-bottom-right-radius : 20px 20px;	 */
+  max-height : 600px;
+  overflow-y : auto; 
+}
+
+.menu .menu-items .menu-item {		
+  font-family: Code!important;
+  height          : 40px;
+  display         : block;
+  background-color: rgba(85, 23, 126, 0.774);
+  /* box-shadow      : inset 1px 1px 1px 1px #b8b8b8; */
+  height          : 38px;
+  line-height     : 38px;
+  color           : white;
+  /* text-shadow: 0 0 10px #FFFFFF, 0px 1px 20px #FDA700; */
+  text-align      : center;
+}
+
+.menu .menu-items .menu-item.selected {  
+  background-color: white;
+  color:rgba(85, 23, 126, 0.774);
+  /* text-shadow: 0 0 10px #FFFFFF, 0px 1px 20px #FFFFFF; */
+}
