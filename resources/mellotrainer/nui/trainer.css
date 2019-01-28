@@ -1,0 +1,189 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("Roboto.ttf");
+}
+
+#trainercontainer {
+    position: absolute;
+    left: 0%;
+}
+
+p {
+    font-family: "Roboto";
+}
+
+.traineroption {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin: 4px;
+    color: white;
+    height: 40px;
+    width: 350px;
+    background: rgba(0, 0, 0, 0.75);
+    margin-top: -4px;
+    padding-left: 5px;
+}
+
+.traineroption.trainertitle {
+    justify-content: center;
+    font-size: 25px;
+    height: 75px;
+    background: rgba(0, 0, 128, 0.8);
+    text-shadow: 0 0 3px #e04040;
+}
+
+.traineroption.trainertitle:after {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.traineroption.selected {
+    background: rgba(200, 200, 200, 0.95);
+    color: gray;
+}
+
+
+.traineroption.selected.menuText:after {
+    content: ">>";
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.menuText:after{
+    content: ">>";
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+.stateON:after {
+    content: "ON";
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.hidden{
+    display: none !important;
+}
+
+
+.stateOFF:after {
+    content: "OFF";
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+.pageindicator {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+#trainertitlecontainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    margin: 4px;
+    color: white;
+    height: 65px;
+    width: 350px;
+    margin-top: -4px;
+    padding-left: 5px;
+
+    background: rgba( 0, 0, 128, 0.95 ); 
+    background: linear-gradient( to bottom, rgba( 0, 0, 255, 1 ), rgba( 0, 0, 128, 0.95 ) );
+
+    text-shadow: 0 0 3px #e04040;
+    justify-content: center;
+}
+
+
+#trainertitlecontainer:after {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.trainertitle{
+    font-size: 26px;
+    flex-grow: 1;
+}
+
+#pageindicator{
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+}
+
+
+
+/*  Speedometer CSS */
+
+
+#speedcontainer {
+    position: absolute;
+    bottom: 35px;
+    right: 45px;
+}
+
+#speedcontainer p{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.speedtext {
+    color: white;
+    font-size: 60px;
+    text-shadow: 2px 2px 0px #000000; /* Text outline */
+}
+
+.speedsuffix {
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 0px #000000; /* Text outline */
+}
+
+.circle {
+    border-radius: 50%;
+    width: 145px;
+    height: 145px;
+    background-color:rgba(0, 0, 0, 0.85);
+    border: 3px solid black;
+}
+
+
+/* Voice CSS */
+#voicecontainer {
+    margin: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+}
+
+.voiceHeader {
+    margin: auto;
+    font-size: 20px;
+    color: white;
+    font-weight:bolder;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.voicename {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 2px 2px 2px #000000;
+}

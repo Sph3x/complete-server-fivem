@@ -1,0 +1,1027 @@
+<html>
+    <head>
+        <link href="trainer.css" rel="stylesheet" type="text/css" />
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script src="trainer.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <!-- Voice Overlay Container, Top-Center of screen. --
+        <div id="voicecontainer" style="display: none;" data-container="true">
+            <p class="voiceHeader">Currently Talking:</p>
+            <span id="voiceActive">
+            </span>
+        </div> -->
+
+
+
+        <!-- Speed Container, bottom right Corner of the screen -->
+        <div id="speedcontainer" class="circle" style="display: none;" data-container="true">
+            <p class="speedtext">0</p>
+            <p class="speedsuffix">MPH</p>
+        </div>
+
+
+
+
+        <!-- Trainer menu container -->
+        <div id="trainercontainer" style="display: none;" data-container="true">
+            <div id="trainertitlecontainer" data-container="true">
+                <!-- Title -->
+                <p class="trainertitle">Admin Menu V2</p>
+                <!-- Page Indicator updated by JS -->
+                <p id="pageindicator"></p>
+            </div>
+
+
+            <!-- Main menu -->
+            <div id="mainmenu">
+                <p class="traineroption" data-sub="Menu_joueur_en_ligne">Online Players</p>
+                <p class="traineroption" data-sub="Joueur_menu">Player</p>
+                <!-- <p class="traineroption" data-sub="actionsmenu">Actions</p>  -->
+                <p class="traineroption" data-sub="Menu_arme">Weapons</p>
+                <p class="traineroption" data-sub="Menu_vehicle">Vehicles</p>
+                <p class="traineroption" data-sub="Menu_monde">World</p>
+                <p class="traineroption" data-sub="Paramettre">Settings</p>
+                <p class="traineroption" data-sub="Admin_menu" data-require="admin">Admin Menu</p>
+                <!-- <p class="traineroption" data-sub="aboutmenu">About</p> -->
+            </div>
+
+
+            <!--
+                                _     _                           __  __                        
+                 /\            | |   (_)                         |  \/  |                       
+                /  \      ___  | |_   _    ___    _ __    ___    | \  / |   ___   _ __    _   _ 
+               / /\ \    / __| | __| | |  / _ \  | '_ \  / __|   | |\/| |  / _ \ | '_ \  | | | |
+              / ____ \  | (__  | |_  | | | (_) | | | | | \__ \   | |  | | |  __/ | | | | | |_| |
+             /_/    \_\  \___|  \__| |_|  \___/  |_| |_| |___/   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                                    
+            -->
+
+            <!-- Animations Menus -->
+            <div id="actionsmenu" data-parent="mainmenu">
+            </div>
+
+
+            <!--
+               ____            _   _                    _____    _                                         __  __                        
+              / __ \          | | (_)                  |  __ \  | |                                       |  \/  |                       
+             | |  | |  _ __   | |  _   _ __     ___    | |__) | | |   __ _   _   _    ___   _ __   ___    | \  / |   ___   _ __    _   _ 
+             | |  | | | '_ \  | | | | | '_ \   / _ \   |  ___/  | |  / _` | | | | |  / _ \ | '__| / __|   | |\/| |  / _ \ | '_ \  | | | |
+             | |__| | | | | | | | | | | | | | |  __/   | |      | | | (_| | | |_| | |  __/ | |    \__ \   | |  | | |  __/ | | | | | |_| |
+              \____/  |_| |_| |_| |_| |_| |_|  \___|   |_|      |_|  \__,_|  \__, |  \___| |_|    |___/   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                              __/ |                                                      
+                                                                             |___/                                                       
+            -->
+
+            <!-- Online Players menu -->
+            <div id="Menu_joueur_en_ligne" data-parent="mainmenu" data-dynamicmenu="getonlineplayers">
+            </div>
+
+
+                <!-- Player Options Menu (Online) -->
+                <div id="Menu_joueur_en_ligneplayeroptions" data-parent="Menu_joueur_en_ligne">
+                    <p class="traineroption" data-action="otherplayer teleportto">Teleport to Player</p>
+                    <p class="traineroption" data-action="otherplayer teleportinside">Teleport into Player Vehicle</p>
+                    <p class="traineroption" data-action="otherplayer drawroute">Draw Route to Player</p>
+                    <p class="traineroption" data-action="otherplayer spectate" data-state="OFF" data-toggle="featureSpectate">Spectate Player</p>
+                    <p class="traineroption" data-action="otherplayer relationship friendly">Mark Friendly</p>
+                    <p class="traineroption" data-action="otherplayer relationship normal">Mark Neutral</p>
+                    <p class="traineroption" data-action="otherplayer relationship hostile">Mark Hostile</p>
+                </div>
+            
+            
+            <!-- 
+              _____    _                                   __  __                        
+             |  __ \  | |                                 |  \/  |                       
+             | |__) | | |   __ _   _   _    ___   _ __    | \  / |   ___   _ __    _   _ 
+             |  ___/  | |  / _` | | | | |  / _ \ | '__|   | |\/| |  / _ \ | '_ \  | | | |
+             | |      | | | (_| | | |_| | |  __/ | |      | |  | | |  __/ | | | | | |_| |
+             |_|      |_|  \__,_|  \__, |  \___| |_|      |_|  |_|  \___| |_| |_|  \__,_|
+                                    __/ |                                                
+                                   |___/                                                 
+            -->
+
+            <!-- Player menu -->
+            <div id="Joueur_menu" data-parent="mainmenu">
+                <p class="traineroption" data-sub="playerskinmenu">Player Skin</p>
+                <p class="traineroption" data-action="player heal">Clean & Heal Player</p>
+                <p class="traineroption" data-action="player armor">Give Armor to Player</p>
+                <p class="traineroption" data-action="player keepclean" data-state="OFF" data-toggle="featureKeepClean">Keep Clean</p>
+                <p class="traineroption" data-action="player god" data-state="OFF" data-toggle="featurePlayerInvincible">Invincible</p>
+                <p class="traineroption" data-action="player noragdoll" data-state="OFF" data-toggle="featureNoRagDoll">No Ragdoll</p>
+                <p class="traineroption" data-action="player drunk" data-state="OFF" data-toggle="featurePlayerDrunk">Drunk</p>
+                <p class="traineroption" data-action="player stamina" data-state="OFF" data-toggle="featurePlayerInfiniteStamina">Stamina</p>
+                <p class="traineroption" data-action="player superjump" data-state="OFF" data-toggle="featurePlayerSuperJump">Super Jump</p>
+                <p class="traineroption" data-action="player fastrun" data-state="OFF" data-toggle="featurePlayerFastRun">Fast Run</p>
+
+                <p class="traineroption" data-action="player fastswim" data-state="OFF" data-toggle="featurePlayerFastSwim">Fast Swim</p>
+                <p class="traineroption" data-action="player nightvision" data-state="OFF" data-toggle="featureNightVision">Night Vision</p>
+                <p class="traineroption" data-action="player thermalvision" data-state="OFF" data-toggle="featureThermalVision">Thermal Vision</p>
+                <p class="traineroption" data-action="player invisible" data-state="OFF" data-toggle="featurePlayerInvisible">Invisibility</p>
+                <p class="traineroption" data-action="player silent" data-state="OFF" data-toggle="featurePlayerNoNoise">Silent</p>
+                <p class="traineroption" data-action="player everyone" data-state="OFF" data-toggle="featurePlayerIgnoredByAll">Everyone Ignores You</p>
+                <p class="traineroption" data-action="player police" data-state="OFF" data-toggle="featurePlayerIgnoredByPolice">Police Ignore You</p>
+                <p class="traineroption" data-action="player wanted" data-state="OFF" data-toggle="featurePlayerNeverWanted">Never Wanted</p>
+                <p class="traineroption" data-action="player keepwet" data-state="OFF" data-toggle="featureKeepWet">Keep Wet</p>
+                <p class="traineroption" data-action="player suicide">Suicide</p>
+            </div>
+            
+
+            <!-- Player Skin Menu -->
+            <div id="playerskinmenu" data-parent="Joueur_menu">
+                <p class="traineroption" data-sub="playerskinsavedconfigs">Saved Configs</p>
+                <p class="traineroption" data-sub="playerskinmenucharacters">Players</p>
+                <p class="traineroption" data-sub="playerskinmenuanimals">Animals</p>
+                <p class="traineroption" data-sub="playerskinmenunpcs">NPCs</p>
+                <p class="traineroption" data-action="randomskin skin">Randomize Skin Textures</p>
+                <p class="traineroption" data-sub="playerskinmenuskins">Modify Skin Textures</p>
+                <p class="traineroption" data-action="defaultskin skin">Reset Current Skin</p>
+                <p class="traineroption" data-action="randomskin props">Randomize Props</p>
+                <p class="traineroption" data-sub="playerskinmenuprops">Modify Props</p>
+                <p class="traineroption" data-action="defaultskin props">Clear Props</p>
+
+                <p class="traineroption" data-action="playerskin input">Change player model by name</p>
+            </div>
+
+            <!-- Player Skins: Saved Configs -->
+            <div id="playerskinsavedconfigs" data-parent="playerskinmenu" data-dynamicmenu="loadsavedskins">
+            </div>
+
+            <!-- Player Skins: Characters --> 
+            <div id="playerskinmenucharacters" data-parent="playerskinmenu" data-staticmenu="player_skins_characters">
+            </div>
+
+            <!-- Player Skins: Animals -->
+            <div id="playerskinmenuanimals" data-parent="playerskinmenu" data-staticmenu="player_skins_animals">
+            </div>
+
+            <!-- Player Skin Menu: NPCs -->
+            <div id="playerskinmenunpcs" data-parent="playerskinmenu" data-staticmenu="player_skins_npcs">
+            </div>
+
+            <!-- Player Skin Menu: Skins -->
+            <div id="playerskinmenuskins" data-parent="playerskinmenu" data-dynamicmenu="playerskinmodify">
+            </div>
+
+            <!-- Player Skin Menu: Props -->
+            <div id="playerskinmenuprops" data-parent="playerskinmenu" data-dynamicmenu="playerpropmodify">
+            </div>
+
+
+            <!--
+             __      __         _       _          _                  __  __                        
+             \ \    / /        | |     (_)        | |                |  \/  |                       
+              \ \  / /    ___  | |__    _    ___  | |   ___   ___    | \  / |   ___   _ __    _   _ 
+               \ \/ /    / _ \ | '_ \  | |  / __| | |  / _ \ / __|   | |\/| |  / _ \ | '_ \  | | | |
+                \  /    |  __/ | | | | | | | (__  | | |  __/ \__ \   | |  | | |  __/ | | | | | |_| |
+                 \/      \___| |_| |_| |_|  \___| |_|  \___| |___/   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                                                    
+            -->
+            
+            <!-- Vehicles menu -->
+            <div id="Menu_vehicle" data-parent="mainmenu">
+                <p class="traineroption" data-sub="vehiclesspawnmenu">Vehicle Spawner</p>
+                <p class="traineroption" data-sub="vehiclesspawnoptionsmenu">Spawn Options</p>
+                <p class="traineroption" data-sub="vehiclessavedmenu">Saved Vehicles</p>
+                <!-- <p class="traineroption" data-sub="vehiclesownedmenu">Owned Vehicles </p> -->
+                <p class="traineroption" data-sub="vehiclesmodmenu" data-require="vehicle">Modifications</p>
+                <p class="traineroption" data-sub="vehiclespaintoptions">Paint Options</p>
+                <p class="traineroption" data-sub="vehiclesdamagesettings">Damage Settings</p>
+                <p class="traineroption" data-sub="vehiclespowersettings">Power Boost Options</p>
+                <p class="traineroption" data-sub="vehiclestorquesettings">Torque Boost Options</p>
+                <p class="traineroption" data-sub="vehiclessuspensionoptions">Suspension Options</p>
+
+
+                <p class="traineroption" data-action="veh fixset">Repair & Set Properly</p>
+                <p class="traineroption" data-action="vehopts nodrag" data-state="OFF" data-toggle="featureNoDragOut">No Drag Out</p>
+                <p class="traineroption" data-action="vehopts nofall" data-state="OFF" data-toggle="featureNoFallOff">No Fall Off</p>
+                <p class="traineroption" data-action="vehopts nohelmet" data-state="OFF" data-toggle="featureNoHelmet">No Helmet</p>
+                <p class="traineroption" data-action="vehopts driftmode" data-state="OFF" data-toggle="featureDriftMode">Drift Mode</p>
+                <p class="traineroption" data-sub="vehiclesdoormenu">Door Controls</p>
+                <p class="traineroption" data-sub="vehicleswindowmenu">Window Controls</p>
+                <p class="traineroption" data-action="veh speedometer" data-state="OFF" data-toggle="featureSpeedometer">Speedometer (MPH)</p>
+                <p class="traineroption" data-action="veh fix">Fix Vehicle</p>
+                <p class="traineroption" data-action="veh clean">Clean Vehicle</p>
+                <p class="traineroption" data-action="veh dirty">Dirty Vehicle</p>
+                <p class="traineroption" data-action="veh set">Set Properly</p>
+            </div>
+
+
+            <!-- Saved Vehicles Menu -->
+             <div id="vehiclessavedmenu" data-parent="Menu_vehicle" data-dynamicmenu="loadsavedvehs">
+                 <!-- <p class="traineroption" data-action="vehiclesave">Create New Vehicle Save</p> -->
+             </div>
+
+            
+            <!-- Owned Vehicle Menu -->
+            <div id="vehiclesownedmenu" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="">Set Vehicle As Owned</p>    <!-- TODO -->
+                <p class="traineroption" data-action="">Clear Owned Vehicle</p>    <!-- TODO -->
+                <p class="traineroption" data-sub="ownedremotecontrolmenu">Remote Control Options</p>    <!-- TODO -->
+                <p class="traineroption" data-action="">Teleport Into Owned Vehicle</p>    <!-- TODO -->
+                <p class="traineroption" data-action="">Teleport Owned Vehicle To You</p>    <!-- TODO -->
+                <p class="traineroption" data-action="">Delete Owned Vehicle</p>    <!-- TODO -->
+            </div>
+
+
+            <!-- Damage Settings -->
+            <div id="vehiclesdamagesettings" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="vehopts cosdamage" data-state="OFF" data-toggle="featureVehCosDamage">No Cosmetic Damage</p>
+                <p class="traineroption" data-action="vehopts mechdamage" data-state="OFF" data-toggle="featureVehMechDamage">No Mechanical Damage</p>
+                <p class="traineroption" data-action="vehopts invincible" data-state="OFF" data-toggle="featureVehInvincible">Indestructable</p>
+            </div>
+
+
+            <!-- Power Boost Options -->
+            <div id="vehiclespowersettings" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="vehopts powerboost 1">Default</p>
+                <p class="traineroption" data-action="vehopts powerboost 75">x75</p>
+                <p class="traineroption" data-action="vehopts powerboost 100">x100</p>
+                <p class="traineroption" data-action="vehopts powerboost 150">x150</p>
+                <p class="traineroption" data-action="vehopts powerboost 200">x200</p>
+                <p class="traineroption" data-action="vehopts powerboost 250">x250</p>
+                <p class="traineroption" data-action="vehopts powerboost 300">x300</p>
+                <p class="traineroption" data-action="vehopts powerboost 350">x350</p>
+                <p class="traineroption" data-action="vehopts powerboost 400">x400</p>
+                <p class="traineroption" data-action="vehopts powerboost 450">x450</p>
+                <p class="traineroption" data-action="vehopts powerboost 500">x500</p>
+            </div>
+
+
+            <!-- Torque Boost Options -->
+            <div id="vehiclestorquesettings" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="vehopts torqueboost 1">Default</p>
+                <p class="traineroption" data-action="vehopts torqueboost 2">x2</p>
+                <p class="traineroption" data-action="vehopts torqueboost 5">x5</p>
+                <p class="traineroption" data-action="vehopts torqueboost 10">x10</p>
+                <p class="traineroption" data-action="vehopts torqueboost 15">x15</p>
+                <p class="traineroption" data-action="vehopts torqueboost 25">x25</p>
+                <p class="traineroption" data-action="vehopts torqueboost 50">x50</p>
+                <p class="traineroption" data-action="vehopts torqueboost 75">x75</p>
+                <p class="traineroption" data-action="vehopts torqueboost 100">x100</p>
+                <p class="traineroption" data-action="vehopts torqueboost 150">x150</p>
+                <p class="traineroption" data-action="vehopts torqueboost 200">x200</p>
+            </div>
+
+
+            <!-- Suspension Options -->
+            <div id="vehiclessuspensionoptions" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="vehopts lowering 0">Default</p>
+                <p class="traineroption" data-action="vehopts lowering 1">Lowering Level 1</p>
+                <p class="traineroption" data-action="vehopts lowering 2">Lowering Level 2</p>
+                <p class="traineroption" data-action="vehopts lowering 3">Lowering Level 3</p>
+                <p class="traineroption" data-action="vehopts lowering 4">Lowering Level 4</p>
+                <p class="traineroption" data-action="vehopts lowering 5">Lowering Level 5</p>
+                <p class="traineroption" data-action="vehopts lowering 6">Lowering Level 6</p>
+            </div>
+
+
+
+            <!-- Vehicle Spawn Options -->
+            <div id="vehiclesspawnoptionsmenu" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="vehspawnoptions insidecar" data-state="OFF" data-toggle="featureSpawnInsideCar">Spawn Into Vehicle</p>
+                <p class="traineroption" data-action="vehspawnoptions despawn" data-state="OFF" data-toggle="featureDeleteLastVehicle">Delete Previous Vehicle</p>
+                <p class="traineroption" data-action="vehspawnoptions infront" data-state="OFF" data-toggle="featureSpawnCarInFront">Spawn Vehicle In Front</p>
+            </div>
+        
+
+            <!-- Vehicle Spawner. Chooose type of vehicle to spawn. -->
+            <div id="vehiclesspawnmenu" data-parent="Menu_vehicle">
+                <p class="traineroption" data-sub="vehiclestypemenucars">Cars</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrial">Industrial</p>
+                <p class="traineroption" data-sub="vehiclestypemenuemergency">Emergency and Military</p>
+                <p class="traineroption" data-sub="vehiclestypemenumotorcycles">Motorcycles</p>
+                <p class="traineroption" data-sub="vehiclestypemenuplanes">Planes</p>
+                <p class="traineroption" data-sub="vehiclestypemenuhelicopters">Helicopters</p>
+                <p class="traineroption" data-sub="vehiclestypemenuboats">Boats</p>
+                <p class="traineroption" data-sub="vehiclestypemenubicycles">Bicycles</p>
+                <p class="traineroption" data-action="vehspawn input">Spawn Vehicle By Name</p>
+            </div>
+
+
+
+            <!-- Vehicle Spawner: Cars -->
+            <div id="vehiclestypemenucars" data-parent="vehiclesspawnmenu">
+                <p class="traineroption" data-sub="vehiclestypemenucarssupercars">Supercars</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarssports">Sports</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarssportsclassics">Sport Classics</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarsmuscle">Muscle</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarslowriders">Lowriders</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarscoupes">Coupes</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarssedans">Sedans</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarscompacts">Compacts</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarssuvs">SUVs</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarsoffroad">Offroad</p>
+                <p class="traineroption" data-sub="vehiclestypemenucarsvip">VIP</p>
+            </div>
+
+
+                <!-- Vehicle Spawner Cars: supercars -->
+                <div id="vehiclestypemenucarssupercars" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_supercars">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: sports -->
+                <div id="vehiclestypemenucarssports" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_sports">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: sports classics -->
+                <div id="vehiclestypemenucarssportsclassics" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_sportsclassics">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: muscle -->
+                <div id="vehiclestypemenucarsmuscle" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_muscle">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: lowriders -->
+                <div id="vehiclestypemenucarslowriders" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_lowriders">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: coupes -->
+                <div id="vehiclestypemenucarscoupes" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_coupes">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: sedans -->
+                <div id="vehiclestypemenucarssedans" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_sedans">
+                </div>
+
+
+                <!-- Vehicle Spawner Cars: compacts -->
+                <div id="vehiclestypemenucarscompacts" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_compacts">
+                </div>
+
+
+
+                <!-- Vehicle Spawner Cars: suvs -->
+                <div id="vehiclestypemenucarssuvs" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_suvs">
+                </div>
+
+
+
+                <!-- Vehicle Spawner Cars: offroad -->
+                <div id="vehiclestypemenucarsoffroad" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_offroad">
+                </div>
+
+
+
+                <!-- Vehicle Spawner Cars: vip -->
+                <div id="vehiclestypemenucarsvip" data-parent="vehiclestypemenucars" data-staticmenu="vehicle_cars_vip">
+                </div>                
+
+
+
+
+            <!-- Vehicle Spawner: Industrial-->
+            <div id="vehiclestypemenuindustrial" data-parent="vehiclesspawnmenu">
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialpickups">Pickups</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialvans">Vans</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialtrucks">Trucks</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialservice">Service/Utility</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialtrailers">Trailers</p>
+                <p class="traineroption" data-sub="vehiclestypemenuindustrialtrains">Trains (Undriveable)</p>
+            </div>
+
+
+                <!-- Vehicle Spawner Industrial: pickups -->
+                <div id="vehiclestypemenuindustrialpickups" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_pickups">
+                </div>
+
+
+                <!-- Vehicle Spawner Industrial: vans -->
+                <div id="vehiclestypemenuindustrialvans" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_vans">
+                </div>
+
+
+                <!-- Vehicle Spawner Industrial: trucks -->
+                <div id="vehiclestypemenuindustrialtrucks" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_trucks">
+                </div>
+
+
+                <!-- Vehicle Spawner Industrial: service -->
+                <div id="vehiclestypemenuindustrialservice" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_service">
+                </div>
+
+
+                <!-- Vehicle Spawner Industrial: trailers -->
+                <div id="vehiclestypemenuindustrialtrailers" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_trailers">
+                </div>
+
+
+                <!-- Vehicle Spawner Industrial: trains -->
+                <div id="vehiclestypemenuindustrialtrains" data-parent="vehiclestypemenuindustrial" data-staticmenu="vehicle_industrial_trains">
+                </div>
+
+
+            <!-- Vehicle Spawner: Emergency -->
+            <div id="vehiclestypemenuemergency" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_emergency">
+            </div>
+
+
+            <!-- Vehicle Spawner: Motorcycles -->
+            <div id="vehiclestypemenumotorcycles" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_motorcycles">
+            </div>
+
+
+            <!-- Vehicle Spawner: Planes -->
+            <div id="vehiclestypemenuplanes" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_planes">
+            </div>
+
+
+            <!-- Vehicle Spawner: Helicopters -->
+            <div id="vehiclestypemenuhelicopters" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_helicopters">
+            </div>
+
+
+            <!-- Vehicle Spawner: Boats -->
+            <div id="vehiclestypemenuboats" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_boats">
+            </div>
+
+
+            <!-- Vehicle Spawner: Bicycles -->
+            <div id="vehiclestypemenubicycles" data-parent="vehiclesspawnmenu" data-staticmenu="vehicle_bicycles">
+            </div>
+
+
+            <!--
+             __      __         _       _          _             _____                 _                         _                 _     _                     __  __                        
+             \ \    / /        | |     (_)        | |           / ____|               | |                       (_)               | |   (_)                   |  \/  |                       
+              \ \  / /    ___  | |__    _    ___  | |   ___    | |       _   _   ___  | |_    ___    _ __ ___    _   ____   __ _  | |_   _    ___    _ __     | \  / |   ___   _ __    _   _ 
+               \ \/ /    / _ \ | '_ \  | |  / __| | |  / _ \   | |      | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _` | | __| | |  / _ \  | '_ \    | |\/| |  / _ \ | '_ \  | | | |
+                \  /    |  __/ | | | | | | | (__  | | |  __/   | |____  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  | (_| | | |_  | | | (_) | | | | |   | |  | | |  __/ | | | | | |_| |
+                 \/      \___| |_| |_| |_|  \___| |_|  \___|    \_____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \__,_|  \__| |_|  \___/  |_| |_|   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                                                                                                                                             
+            -->
+            
+            <!-- Vehicle Customization Menu -->
+            <div id="vehiclesmodmenu" data-parent="Menu_vehicle" data-dynamicmenu="vehmods">
+                <p class="traineroption" data-sub="vehiclesenginemenu">Engine (5)</p>
+                <p class="traineroption" data-sub="vehiclesbrakemenu">Brakes (5)</p>
+                <p class="traineroption" data-sub="vehiclestransmissionmenu">Transmission (4)</p>
+                <p class="traineroption" data-sub="vehicleshornmenu">Horn (36)</p>
+                <p class="traineroption" data-sub="vehiclessuspensionmenu">Suspension (5)</p>
+                <p class="traineroption" data-sub="vehiclesarmormenu">Armor (6)</p>
+                <p class="traineroption" data-sub="vehicleswindowtintmenu">Window Tint (6)</p>
+                <p class="traineroption" data-sub="vehicleslicensesmenu">License Plates (7)</p>
+                <p class="traineroption" data-action="vehmod platetext">Change Plate Text</p>
+                <p class="traineroption" data-sub="vehicleswheelcategorymenu">Wheel Category (8)</p>
+                <p class="traineroption" data-sub="vehicleswheelchoicemenu" data-dynamicsub="wheeltype">Wheel Choices</p>
+                <p class="traineroption" data-sub="vehiclestiresmokemenu">Tire Smoke (69)</p>
+                <p class="traineroption" data-sub="vehiclesneonlightsmenu">Neon Lights (39)</p>
+                <p class="traineroption" data-action="vehmod turbomode" data-state="OFF" data-toggle="featureTurboMode">Toggle Turbo Tuning</p>
+                <p class="traineroption" data-action="vehmod xenonlights" data-state="OFF" data-toggle="featureXeonLights">Toggle Xenon Lights</p>
+                <p class="traineroption" data-action="vehmod customtires" data-state="OFF" data-toggle="featureCustomTires">Toggle Custom Tires</p>
+                <p class="traineroption" data-action="vehmod bulletwheels" data-state="OFF" data-toggle="featureBulletproofWheels">Toggle Bulletproof Tires</p>
+            </div>
+
+
+                <!-- Vehicle Window Tints -->
+                <div id="vehicleswindowtintmenu" data-parent="vehiclesmodmenu">
+                    <p class="traineroption" data-action="vehmod windowtint 0">Stock</p>
+                    <p class="traineroption" data-action="vehmod windowtint 1">Dark</p>
+                    <p class="traineroption" data-action="vehmod windowtint 2">Medium</p>
+                    <p class="traineroption" data-action="vehmod windowtint 3">Light</p>
+                    <p class="traineroption" data-action="vehmod windowtint 4">None</p>
+                    <p class="traineroption" data-action="vehmod windowtint 5">Green</p>
+                </div>
+
+                <!-- Vehicle License Plates -->
+                <div id="vehicleslicensesmenu" data-parent="vehiclesmodmenu">
+                    <p class="traineroption" data-action="vehmod plate 0">Blue on White</p>
+                    <p class="traineroption" data-action="vehmod plate 1">Yellow on Black</p>
+                    <p class="traineroption" data-action="vehmod plate 2">Yellow on Blue</p>
+                    <p class="traineroption" data-action="vehmod plate 3">San Andreas</p>
+                    <p class="traineroption" data-action="vehmod plate 4">SA Exempt</p>
+                    <p class="traineroption" data-action="vehmod plate 5">Yankton</p>
+                </div>
+
+
+                <!-- Vehicle Wheel Category -->
+                <div id="vehicleswheelcategorymenu" data-parent="vehiclesmodmenu">
+                    <p class="traineroption" data-action="vehmod changewheeltype 0">Sport</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 1">Muscle</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 2">Lowrider</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 3">SUV</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 4">Offroad</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 5">Tuner</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 7">Highend</p>
+                    <p class="traineroption" data-action="vehmod changewheeltype 8">Benny's Original</p>
+                </div>
+
+
+                <!-- Vehicle Wheel Choice menus -->
+
+
+                <!-- Sport -->
+                <div id="vehicleswheelchoicemenu0" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_0">
+                </div>
+
+                <!-- Muscle -->
+                <div id="vehicleswheelchoicemenu1" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_1">
+                </div>
+
+                <!-- Lowrider -->
+                <div id="vehicleswheelchoicemenu2" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_2">
+                </div>
+
+                <!-- SUV -->
+                <div id="vehicleswheelchoicemenu3" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_3">
+                </div>
+
+                <!-- Offroad -->
+                <div id="vehicleswheelchoicemenu4" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_4">
+                </div>
+
+                <!-- Tuner -->
+                <div id="vehicleswheelchoicemenu5" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_5">
+                </div>
+
+                <!-- Highend -->
+                <div id="vehicleswheelchoicemenu7" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_7">
+                </div>
+
+                <!-- Benny's Original --> 
+                <div id="vehicleswheelchoicemenu8" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_wheel_8">
+                </div>
+
+
+                <!-- BikerWheels? -->
+                <div id="vehicleswheelchoicemenu6" data-parent="vehiclesmodmenu">
+                    <p class="traineroption" data-sub="vehicleswheelchoicemenufrontwheel">Front Wheel</p>
+                    <p class="traineroption" data-sub="vehicleswheelchoicemenubackwheel">Back Wheel</p>
+                </div>
+
+                    <!-- Front Wheels -->
+                    <div id="vehicleswheelchoicemenufrontwheel" data-parent="vehicleswheelchoicemenu6" data-staticmenu="vehicle_wheel_front">
+                    </div>
+
+                    <!-- Back Wheels -->
+                    <div id="vehicleswheelchoicemenubackwheel" data-parent="vehicleswheelchoicemenu6" data-staticmenu="vehicle_wheel_back">
+                    </div>
+
+
+
+                <!-- Vehicle Wheel Smoke -->
+                <div id="vehiclestiresmokemenu" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_mod_smoke_colors">
+                </div>
+
+
+                <!-- Vehicle Neon Lights -->
+                <div id="vehiclesneonlightsmenu" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_mod_neon_colors">
+                    <p class="traineroption" data-action="vehmod neonlights left" data-state="OFF" data-toggle="featureNeonLeft">Toggle Neon Left</p>
+                    <p class="traineroption" data-action="vehmod neonlights right" data-state="OFF" data-toggle="featureNeonRight">Toggle Neon Right</p>
+                    <p class="traineroption" data-action="vehmod neonlights front" data-state="OFF" data-toggle="featureNeonFront">Toggle Neon Front</p>
+                    <p class="traineroption" data-action="vehmod neonlights rear" data-state="OFF" data-toggle="featureNeonRear">Toggle Neon Rear</p>
+                </div>
+
+
+            <!-- Vehicle Paint Options -->
+            <div id="vehiclespaintoptions" data-parent="Menu_vehicle">
+                <p class="traineroption" data-sub="vehiclespaintoptionsprimary">Primary Color</p>
+                <p class="traineroption" data-sub="vehiclespaintoptionssecondary">Secondary Color</p>
+                <p class="traineroption" data-sub="vehiclespaintoptionsboth">Primary & Secondary</p>
+                <p class="traineroption" data-sub="vehiclespaintpearltopcoat">Pearl Topcoat</p>
+                <p class="traineroption" data-sub="vehiclespaintoptionswheels">Wheel Color</p>
+            </div>
+
+
+                <div id="vehiclespaintpearltopcoat" data-parent="vehiclespaintoptions" data-staticmenu="vehicle_mod_paint_pearl_topcoat">
+                </div>
+
+
+                <div id="vehiclespaintoptionswheels" data-parent="vehiclespaintoptions" data-staticmenu="vehicle_mod_paint_wheels">
+                </div>
+
+
+                <div id="vehiclespaintoptionsprimary" data-parent="vehiclespaintoptions">
+                    <p class="traineroption" data-sub="vehiclespaintprimarynormal">Normal</p>
+                    <p class="traineroption" data-sub="vehiclespaintprimarymetallic">Metallic</p>
+                    <p class="traineroption" data-sub="vehiclespaintprimarymatte">Matte</p>
+                    <p class="traineroption" data-sub="vehiclespaintprimarymetal">Metal</p>
+                    <p class="traineroption" data-sub="vehiclespaintprimarychrome">Chrome</p>
+                </div>
+
+
+                    <div id="vehiclespaintprimarynormal" data-parent="vehiclespaintoptionsprimary" data-staticmenu="vehicle_mod_paint_primary_normal">
+                    </div>
+
+
+                    <div id="vehiclespaintprimarymetallic" data-parent="vehiclespaintoptionsprimary" data-staticmenu="vehicle_mod_paint_primary_metallic">
+                    </div>
+
+
+                    <div id="vehiclespaintprimarymatte" data-parent="vehiclespaintoptionsprimary" data-staticmenu="vehicle_mod_paint_primary_matte">
+                    </div>
+
+
+                    <div id="vehiclespaintprimarymetal" data-parent="vehiclespaintoptionsprimary" data-staticmenu="vehicle_mod_paint_primary_metal">
+                    </div>
+
+
+                    <div id="vehiclespaintprimarychrome" data-parent="vehiclespaintoptionsprimary" data-staticmenu="vehicle_mod_paint_primary_chrome">
+                    </div>
+
+
+                <div id="vehiclespaintoptionssecondary" data-parent="vehiclespaintoptions">
+                    <p class="traineroption" data-sub="vehiclespaintsecondarynormal">Normal</p>
+                    <p class="traineroption" data-sub="vehiclespaintsecondarymetallic">Metallic</p>
+                    <p class="traineroption" data-sub="vehiclespaintsecondarymatte">Matte</p>
+                    <p class="traineroption" data-sub="vehiclespaintsecondarymetal">Metal</p>
+                    <p class="traineroption" data-sub="vehiclespaintsecondarychrome">Chrome</p>
+                </div>
+
+
+                    <div id="vehiclespaintsecondarynormal" data-parent="vehiclespaintoptionssecondary" data-staticmenu="vehicle_mod_paint_secondary_normal">
+                    </div>
+
+
+                    <div id="vehiclespaintsecondarymetallic" data-parent="vehiclespaintoptionssecondary" data-staticmenu="vehicle_mod_paint_secondary_metallic">
+                    </div>
+
+
+                    <div id="vehiclespaintsecondarymatte" data-parent="vehiclespaintoptionssecondary" data-staticmenu="vehicle_mod_paint_secondary_matte">
+                    </div>
+
+
+                    <div id="vehiclespaintsecondarymetal" data-parent="vehiclespaintoptionssecondary" data-staticmenu="vehicle_mod_paint_secondary_metal">
+                    </div>
+
+
+                    <div id="vehiclespaintsecondarychrome" data-parent="vehiclespaintoptionssecondary" data-staticmenu="vehicle_mod_paint_secondary_chrome">
+                    </div>
+
+
+                <div id="vehiclespaintoptionsboth" data-parent="vehiclespaintoptions">
+                    <p class="traineroption" data-sub="vehiclespaintbothnormal">Normal</p>
+                    <p class="traineroption" data-sub="vehiclespaintbothmetallic">Metallic</p>
+                    <p class="traineroption" data-sub="vehiclespaintbothmatte">Matte</p>
+                    <p class="traineroption" data-sub="vehiclespaintbothmetal">Metal</p>
+                    <p class="traineroption" data-sub="vehiclespaintbothchrome">Chrome</p>
+                </div>
+
+
+                    <div id="vehiclespaintbothnormal" data-parent="vehiclespaintoptionsboth" data-staticmenu="vehicle_mod_paint_both_normal">
+                    </div>
+
+
+                    <div id="vehiclespaintbothmetallic" data-parent="vehiclespaintoptionsboth" data-staticmenu="vehicle_mod_paint_both_metallic">
+                    </div>
+
+
+                    <div id="vehiclespaintbothmatte" data-parent="vehiclespaintoptionsboth" data-staticmenu="vehicle_mod_paint_both_matte">
+                    </div>
+
+
+                    <div id="vehiclespaintbothmetal" data-parent="vehiclespaintoptionsboth" data-staticmenu="vehicle_mod_paint_both_metal">
+                    </div>
+
+
+                    <div id="vehiclespaintbothchrome" data-parent="vehiclespaintoptionsboth" data-staticmenu="vehicle_mod_paint_both_chrome">
+                    </div>
+
+
+            <!-- Vehicle Door Options -->
+            <div id="vehiclesdoormenu" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="veh toggleinstantly" data-state="OFF" data-toggle="featureCloseInstantly">Open Doors Instantly</p>
+                <p class="traineroption" data-action="veh toggledoor 0">Front Left</p>
+                <p class="traineroption" data-action="veh toggledoor 1">Front Right</p>
+                <p class="traineroption" data-action="veh toggledoor 2">Rear Left</p>
+                <p class="traineroption" data-action="veh toggledoor 3">Rear Right</p>
+                <p class="traineroption" data-action="veh toggledoor 4">Hood</p>
+                <p class="traineroption" data-action="veh toggledoor 5">Trunk</p>
+                <p class="traineroption" data-action="veh toggledoor 6">Trunk 2</p>
+                <p class="traineroption" data-action="veh openall">Open all</p>
+                <p class="traineroption" data-action="veh closeall">Close all</p>
+            </div>
+
+            
+            <!-- Vehicle Window Options -->
+            <div id="vehicleswindowmenu" data-parent="Menu_vehicle">
+                <p class="traineroption" data-action="veh rollwindow 0">Front Left Window</p>
+                <p class="traineroption" data-action="veh rollwindow 1">Front Right Window</p>
+                <p class="traineroption" data-action="veh rollwindow 2">Rear Left Window</p>
+                <p class="traineroption" data-action="veh rollwindow 3">Rear Right Window</p>
+                <p class="traineroption" data-action="veh rollwindows">Roll all Windows</p>
+
+                <p class="traineroption" data-action="veh fixwindow 0">Fix Front Left Window</p>
+                <p class="traineroption" data-action="veh fixwindow 1">Fix Front Right Window</p>
+                <p class="traineroption" data-action="veh fixwindow 2">Fix Rear Left Window</p>
+                <p class="traineroption" data-action="veh fixwindow 3">Fix Rear Right Window</p>
+                <p class="traineroption" data-action="veh fixwindows">Fix All Windows</p>
+            </div>
+
+
+            <!-- Vehicle Armor Options -->
+            <div id="vehiclesarmormenu" data-parent="vehiclesmodmenu">
+                <p class="traineroption" data-action="vehmodify 16 -1">None</p>
+                <p class="traineroption" data-action="vehmodify 16 0">Armor Upgrade 20%</p>
+                <p class="traineroption" data-action="vehmodify 16 1">Armor Upgrade 40%</p>
+                <p class="traineroption" data-action="vehmodify 16 2">Armor Upgrade 60%</p>
+                <p class="traineroption" data-action="vehmodify 16 3">Armor Upgrade 80%</p>
+                <p class="traineroption" data-action="vehmodify 16 4">Armor Upgrade 100%</p>
+            </div>
+
+
+            <!-- Vehicle Brakes Options -->
+            <div id="vehiclesbrakemenu" data-parent="vehiclesmodmenu">
+                <p class="traineroption" data-action="vehmodify 12 -1">Stock Brakes</p>
+                <p class="traineroption" data-action="vehmodify 12 0">Street Brakes</p>
+                <p class="traineroption" data-action="vehmodify 12 1">Sport Brakes</p>
+                <p class="traineroption" data-action="vehmodify 12 2">Race Brakes</p>
+            </div>
+
+
+            <!-- Vehicle Engine Options -->
+            <div id="vehiclesenginemenu" data-parent="vehiclesmodmenu">
+                <p class="traineroption" data-action="vehmodify 11 -1">Stock Engine</p>
+                <p class="traineroption" data-action="vehmodify 11 0">EMS Upgrade, Level 1</p>
+                <p class="traineroption" data-action="vehmodify 11 1">EMS Upgrade, Level 2</p>
+                <p class="traineroption" data-action="vehmodify 11 2">EMS Upgrade, Level 3</p>
+                <p class="traineroption" data-action="vehmodify 11 3">EMS Upgrade, Level 4</p>
+            </div>
+
+
+            <!-- Vehicle Horn Options -->
+            <div id="vehicleshornmenu" data-parent="vehiclesmodmenu" data-staticmenu="vehicle_mod_horn">
+            </div>
+
+
+            <!-- Vehicle Suspension Options -->
+            <div id="vehiclessuspensionmenu" data-parent="vehiclesmodmenu">
+                <p class="traineroption" data-action="vehmodify 15 -1">Stock Suspension</p>
+                <p class="traineroption" data-action="vehmodify 15 0">Lowered Suspension</p>
+                <p class="traineroption" data-action="vehmodify 15 1">Street Suspension</p>
+                <p class="traineroption" data-action="vehmodify 15 2">Sport Suspension</p>
+                <p class="traineroption" data-action="vehmodify 15 3">Competition Suspension</p>
+            </div>
+
+
+            <!-- Vehicle Transmission Options -->
+            <div id="vehiclestransmissionmenu" data-parent="vehiclesmodmenu">
+                <p class="traineroption" data-action="vehmodify 13 -1">Stock Transmission</p>
+                <p class="traineroption" data-action="vehmodify 13 0">Street Transmission</p>
+                <p class="traineroption" data-action="vehmodify 13 1">Sports Transmission</p>
+                <p class="traineroption" data-action="vehmodify 13 2">Race Transmission</p>
+            </div>
+
+
+            <!--
+             __          __                                                 __  __                        
+             \ \        / /                                                |  \/  |                       
+              \ \  /\  / /    ___    __ _   _ __     ___    _ __    ___    | \  / |   ___   _ __    _   _ 
+               \ \/  \/ /    / _ \  / _` | | '_ \   / _ \  | '_ \  / __|   | |\/| |  / _ \ | '_ \  | | | |
+                \  /\  /    |  __/ | (_| | | |_) | | (_) | | | | | \__ \   | |  | | |  __/ | | | | | |_| |
+                 \/  \/      \___|  \__,_| | .__/   \___/  |_| |_| |___/   |_|  |_|  \___| |_| |_|  \__,_|
+                                           | |                                                            
+                                           |_|                                                            
+            -->
+            
+            <!-- Weapons menu -->
+            <div id="Menu_arme" data-parent="mainmenu">
+                <p class="traineroption" data-sub="weaponspawnmenu">Weapon Options</p>
+                <p class="traineroption" data-action="weaponoptions addall">Give All Weapons</p>
+                <p class="traineroption" data-action="weaponoptions removeall">Remove All Weapons</p>
+                <p class="traineroption" data-action="weaponoptions infiniteammo" data-state="OFF" data-toggle="featurePlayerInfiniteAmmo">Infinite Ammo</p>
+                <p class="traineroption" data-action="weaponoptions infinitechutes" data-state="OFF" data-toggle="featurePlayerInfiniteParachutes">Infinite Parachutes</p>
+                <p class="traineroption" data-action="weaponoptions noreload" data-state="OFF" data-toggle="featurePlayerNoReload">No Reload</p>
+            </div>
+
+
+            <!-- Weapons menu -->
+            <div id="weaponspawnmenu" data-parent="Menu_arme">
+                <p class="traineroption" data-sub="weaponitemmenumelee">Melee</p>
+                <p class="traineroption" data-sub="weaponitemmenuhandguns">Handguns</p>
+                <p class="traineroption" data-sub="weaponitemmenusubmachine">Submachine Guns</p>
+                <p class="traineroption" data-sub="weaponitemmenuassault">Assault Rifles</p>
+                <p class="traineroption" data-sub="weaponitemmenushotgun">Shotguns</p>
+                <p class="traineroption" data-sub="weaponitemmenusniper">Sniper Rifles</p>
+                <p class="traineroption" data-sub="weaponitemmenuheavy">Heavy Weapons</p>
+                <p class="traineroption" data-sub="weaponitemmenuthrown">Thrown Weapons</p>
+                <p class="traineroption" data-action="weapon input">Spawn Weapon By Name</p>
+            </div>
+
+
+            <!-- Weapon Menu : Melee -->
+            <div id="weaponitemmenumelee" data-parent="weaponspawnmenu" data-staticmenu="weapon_melee">
+            </div>
+
+
+            <!-- Weapon Menu : handguns -->
+            <div id="weaponitemmenuhandguns" data-parent="weaponspawnmenu" data-staticmenu="weapon_handguns">
+            </div>
+
+
+            <!-- Weapon Menu : Submachine Guns -->
+            <div id="weaponitemmenusubmachine" data-parent="weaponspawnmenu" data-staticmenu="weapon_submachine">
+            </div>
+
+
+            <!-- Weapon Menu : assault rifles -->
+            <div id="weaponitemmenuassault" data-parent="weaponspawnmenu" data-staticmenu="weapon_assault">
+            </div>
+
+
+            <!-- Weapon Menu : shotguns -->
+            <div id="weaponitemmenushotgun" data-parent="weaponspawnmenu" data-staticmenu="weapon_shotgun">
+            </div>
+
+
+            <!-- Weapon Menu : sniper rifles -->
+            <div id="weaponitemmenusniper" data-parent="weaponspawnmenu" data-staticmenu="weapon_snipers">
+            </div>
+
+
+            <!-- Weapon Menu : heavy weapons -->
+            <div id="weaponitemmenuheavy" data-parent="weaponspawnmenu" data-staticmenu="weapon_heavy">
+            </div>
+
+
+            <!-- Weapon Menu : thrown weapons -->
+            <div id="weaponitemmenuthrown" data-parent="weaponspawnmenu" data-staticmenu="weapon_thrown">
+            </div>
+
+            <div id="weapontintsmenu">
+                <p class="traineroption" data-action="weapon tint 0">Normal</p>
+                <p class="traineroption" data-action="weapon tint 1">Green</p>
+                <p class="traineroption" data-action="weapon tint 2">Gold</p>
+                <p class="traineroption" data-action="weapon tint 3">Pink</p>
+                <p class="traineroption" data-action="weapon tint 4">Army</p>
+                <p class="traineroption" data-action="weapon tint 5">LSPD</p>
+                <p class="traineroption" data-action="weapon tint 6">Orange</p>
+                <p class="traineroption" data-action="weapon tint 7">Platinum</p>
+            </div>
+
+
+            <!--
+
+                World Menu 
+
+            -->
+
+            <div id="Menu_monde" data-parent="mainmenu">
+                <p class="traineroption" data-sub="locationsmenu">Locations</p>
+            </div>
+
+                <div id="locationsmenu" data-parent="Menu_monde">
+                    
+                </div>
+
+
+            <!--
+               _____          _     _     _                           __  __                        
+              / ____|        | |   | |   (_)                         |  \/  |                       
+             | (___     ___  | |_  | |_   _   _ __     __ _   ___    | \  / |   ___   _ __    _   _ 
+              \___ \   / _ \ | __| | __| | | | '_ \   / _` | / __|   | |\/| |  / _ \ | '_ \  | | | |
+              ____) | |  __/ | |_  | |_  | | | | | | | (_| | \__ \   | |  | | |  __/ | | | | | |_| |
+             |_____/   \___|  \__|  \__| |_| |_| |_|  \__, | |___/   |_|  |_|  \___| |_| |_|  \__,_|
+                                                       __/ |                                        
+                                                      |___/                                         
+            -->
+
+        
+            <!-- Settings Menu -->
+           <div id="Paramettre" data-parent="mainmenu">
+                <p class="traineroption" data-action="settingtoggle mapblips" data-state="OFF" data-toggle="featureMapBlips">Map Location Blips</p>
+                <p class="traineroption" data-action="settingtoggle blips" data-state="OFF" data-toggle="featurePlayerBlips">Player Blips</p>
+                <p class="traineroption" data-action="settingtoggle text" data-state="OFF" data-toggle="featurePlayerHeadDisplay">Overhead Player Names</p>
+
+                <p class="traineroption" data-action="notifications players" data-state="OFF" data-toggle="featurePlayerNotifications">Player Notifications</p>
+                <p class="traineroption" data-action="notifications death" data-state="OFF" data-toggle="featureDeathNotifications">Death Notifications</p>
+                <p class="traineroption" data-sub="voicesettingsmenu">Voice Options</p>
+
+                <p class="traineroption" data-action="settingtoggle radiooff" data-state="OFF" data-toggle="featureRadioAlwaysOff">Radio Always Off</p>
+                <p class="traineroption" data-action="settingtoggle mobileradio" data-state="OFF" data-toggle="featurePlayerRadio">Portable Radio</p>
+                <p class="traineroption" data-action="settingtoggle skipradio">Next Radio Track</p>
+
+                <p class="traineroption" data-action="settingtoggle radar" data-state="OFF" data-toggle="featureHideMap">Hide Map</p>
+                <p class="traineroption" data-action="settingtoggle enlarge" data-state="OFF" data-toggle="featureBigHud">Large Map</p>
+                <p class="traineroption" data-action="settingtoggle hud" data-state="OFF" data-toggle="featureHideHud">Hide Hud</p>
+                <p class="traineroption" data-action="settingtoggle streets" data-state="OFF" data-toggle="featureAreaStreetNames">Hide Area & Street Names</p>
+            </div>
+
+
+                <!-- Voice Menu -->
+                <div id="voicesettingsmenu" data-parent="Paramettre">
+                    <p class="traineroption" data-action="voiceopts voicetoggle" data-state="OFF" data-toggle="featureVoiceChat">Voice Chat</p>
+                    <p class="traineroption" data-action="voiceopts showtoggle" data-state="OFF" data-toggle="featureShowVoiceChatSpeaker">Show Voice Chat Speakers</p>
+                    <p class="traineroption" data-sub="voicesettingsmenuchannel">Voice Channel</p>
+                    <p class="traineroption" data-sub="voicesettingsmenuproximity">Voice Proximity</p>
+                </div>
+
+
+                <!-- Voice Channel Menu -->
+                <div id="voicesettingsmenuchannel" data-parent="voicesettingsmenu">
+                    <p class="traineroption" data-action="voiceopts channel 0" data-state="OFF" data-toggle="featureChannelDefault">Default Channel</p>
+                    <p class="traineroption" data-action="voiceopts channel 1" data-state="OFF" data-toggle="featureChannel1">Channel 1</p>
+                    <p class="traineroption" data-action="voiceopts channel 2" data-state="OFF" data-toggle="featureChannel2">Channel 2</p>
+                    <p class="traineroption" data-action="voiceopts channel 3" data-state="OFF" data-toggle="featureChannel3">Channel 3</p>
+                    <p class="traineroption" data-action="voiceopts channel 4" data-state="OFF" data-toggle="featureChannel4">Channel 4</p>
+                    <p class="traineroption" data-action="voiceopts channel 5" data-state="OFF" data-toggle="featureChannel5">Channel 5</p>
+                </div>
+
+
+                <!-- Voice Proximity Menu -->
+                <div id="voicesettingsmenuproximity" data-parent="voicesettingsmenu">
+                    <p class="traineroption" data-action="voiceopts distance 5" data-state="OFF" data-toggle="featureVPTooClose">Extremely Close</p>
+                    <p class="traineroption" data-action="voiceopts distance 25" data-state="OFF" data-toggle="featureVPVeryClose">Very Close</p>
+                    <p class="traineroption" data-action="voiceopts distance 75" data-state="OFF" data-toggle="featureVPClose">Close</p>
+                    <p class="traineroption" data-action="voiceopts distance 200" data-state="OFF" data-toggle="featureVPNearby">Nearby</p>
+                    <p class="traineroption" data-action="voiceopts distance 500" data-state="OFF" data-toggle="featureVPDistant">Distant</p>
+                    <p class="traineroption" data-action="voiceopts distance 2500" data-state="OFF" data-toggle="featureVPFar">Far</p>
+                    <p class="traineroption" data-action="voiceopts distance 8000" data-state="OFF" data-toggle="featureVPVeryFar">Very Far</p>
+                    <p class="traineroption" data-action="voiceopts distance 0" data-state="OFF" data-toggle="featureVPAllPlayers">All Players</p>
+                </div>
+
+
+
+            <!--
+                             _               _             __  __                        
+                 /\         | |             (_)           |  \/  |                       
+                /  \      __| |  _ __ ___    _   _ __     | \  / |   ___   _ __    _   _ 
+               / /\ \    / _` | | '_ ` _ \  | | | '_ \    | |\/| |  / _ \ | '_ \  | | | |
+              / ____ \  | (_| | | | | | | | | | | | | |   | |  | | |  __/ | | | | | |_| |
+             /_/    \_\  \__,_| |_| |_| |_| |_| |_| |_|   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                                         
+            -->
+            
+            <!-- Admin menu -->
+            <div id="Admin_menu" data-parent="mainmenu">
+                <p class="traineroption" data-sub="playermanagemenu">Player Management</p>
+                <p class="traineroption" data-sub="settingsweathermenu">Change Weather</p>
+                <p class="traineroption" data-sub="settingstimemenu">Change Time</p>
+            </div>
+
+
+            <div id="playermanagemenu" data-parent="Admin_menu" data-dynamicmenu="playermanagement">
+            </div>
+
+
+            <!-- Weather Menu -->
+            <div id="settingsweathermenu" data-parent="Admin_menu">
+                <p class="traineroption" data-action="weatheroptions blackout" data-state="OFF" data-toggle="featureBlackout">Blackout</p>
+                <p class="traineroption" data-action="weatheroptions wind" data-state="OFF" data-toggle="featureWeatherWind">Wind</p>
+                <p class="traineroption" data-action="weatheroptions freeze" data-state="OFF" data-toggle="featureWeatherFreeze">Freeze Weather</p>
+                <p class="traineroption" data-action="weather EXTRASUNNY">Extra Sunny</p>
+                <p class="traineroption" data-action="weather CLEAR">Clear</p>
+                <p class="traineroption" data-action="weather CLOUDS">Clouds</p>
+                <p class="traineroption" data-action="weather SMOG">Smog</p>
+                <p class="traineroption" data-action="weather FOGGY">Foggy</p>
+                <p class="traineroption" data-action="weather OVERCAST">Overcast</p>
+                <p class="traineroption" data-action="weather RAIN">Rain</p>
+
+                <p class="traineroption" data-action="weather THUNDER">Thunder (Stormy)</p>
+                <p class="traineroption" data-action="weather CLEARING">Clearing</p> 
+                <p class="traineroption" data-action="weather NEUTRAL">Neutral</p>
+                <p class="traineroption" data-action="weather SNOW">Snow</p>
+                <p class="traineroption" data-action="weather BLIZZARD">Blizzard</p>
+                <p class="traineroption" data-action="weather LIGHTSNOW">Light Snow</p>
+                <p class="traineroption" data-action="weather XMAS">Christmas</p>
+                <p class="traineroption" data-action="weather SNOWLIGHT">Snow Light?</p>
+            </div>
+                
+
+            <!-- Time Menu -->
+            <div id="settingstimemenu" data-parent="Admin_menu">
+                <p class="traineroption" data-action="time 6">Morning</p>
+                <p class="traineroption" data-action="time 12">Mid Day</p>
+                <p class="traineroption" data-action="time 18">Evening</p>
+                <p class="traineroption" data-action="time 0">Night</p>
+                <p class="traineroption" data-action="time forwards">Forward 1 hour</p>
+                <p class="traineroption" data-action="time backwards">Backwards 1 hour</p>
+                <p class="traineroption" data-action="time input">Specify hour (0-24)</p>
+            </div>
+
+
+            <!-- Noclip Menu -->
+            <div id="noclipmenu" data-dynamicmenu="noclipmenu">
+            </div>
+            
+
+            <!-- 
+                         _                       _       __  __                        
+                 /\     | |                     | |     |  \/  |                       
+                /  \    | |__     ___    _   _  | |_    | \  / |   ___   _ __    _   _ 
+               / /\ \   | '_ \   / _ \  | | | | | __|   | |\/| |  / _ \ | '_ \  | | | |
+              / ____ \  | |_) | | (_) | | |_| | | |_    | |  | | |  __/ | | | | | |_| |
+             /_/    \_\ |_.__/   \___/   \__,_|  \__|   |_|  |_|  \___| |_| |_|  \__,_|
+                                                                                       
+            -->
+
+            <!-- About menu -->
+            <div id="aboutmenu" data-parent="mainmenu">
+                <p class="traineroption">Mello Trainer v0.4.5</p>
+                <p class="traineroption">Made By TheStonedTurtle</p>
+                <p class="traineroption">Special Thanks To:</p>
+                <p class="traineroption">WolfKnight</p>
+                <p class="traineroption">All My Beta Testers</p>
+                <p class="traineroption">Scammer's Scorpion Trainer</p>
+                <p class="traineroption">Oui's Lambda Menu</p>
+            </div>
+        </div>
+    </body>
+</html>

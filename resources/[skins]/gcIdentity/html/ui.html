@@ -1,0 +1,52 @@
+<head>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+</head>
+
+<body>
+<img id="cursor" src="cursor.png">
+<div id="identity" class="identity-male">
+	<span id="lastname">John</span>
+	<span id="firstname">O'Sullivan</span>
+	<span id="dateofbirth">14/09/1989</span>
+	<span id="sex">Male</span>
+	<span id="height">70 in</span>
+	<span id="jobs">Bucheron</span>
+	<span id="cardNumber">ID: 1445<<4574571345</span>
+</div>
+
+<div id="register" style="display:none">
+	<form action="" id="registerFrom">
+	<h1>ID Card</h1>
+	<div class="champ">
+		<label for="lastname">Nom :</label>
+		<input type="text" name="lastname" required pattern="^[A-Z].*" >
+	</div>
+	<div class="champ">
+		<label for="firstname">Prénom :</label>
+		<input type="text" name="firstname" required pattern="^[A-Z].*" >
+	</div>
+	<div class="champ">
+		<label for="dateofbirth">Date de Naissance : (dd/mm/yyyy)</label>
+		<input type="text" name="dateofbirth" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])\/(0[1-9]|1[012])\/[0-9]{4}">
+	</div>
+	<div class="champ">
+		<label for="sexy">Sex :</label>
+		<label class="lcheck"><input required type="radio" name="sex" value="f">Femme</label>
+		<label class="lcheck"><input required type="radio" name="sex" value="h">Homme</label>
+	</div>
+	<div class="champ">
+		<label for="height">Taille (cm) :</label>
+		<input  type="number" name="height" required min="100" max="200">
+	</div>
+	<div class="clearfix">
+	<button type="submit">Signer et valider</button>
+	</div>
+	</form>
+</div>
+
+<!-- For local test -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+<script src="script.js" type="text/javascript"></script>
+</body>

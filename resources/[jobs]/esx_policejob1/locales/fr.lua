@@ -1,0 +1,133 @@
+Locales['fr'] = {
+	--Cloakroom
+		['code'] = 'Retirer Permis',
+		['gilet_wear'] = 'Gilet par balle',
+		['giletj_wear'] = 'Gilet jaune',
+		['cloakroom'] = 'vestiaire',
+		['citizen_wear'] = 'Fin de service',
+		['police_wear'] = 'Prise de service',
+		['afterpolice_wear'] = 'Tenue de service',
+		['grade_wear'] = 'Prendre ses échelons',
+		['helmet_wear'] = 'Prendre casquette de police',
+		['open_cloackroom'] = 'appuez sur ~INPUT_CONTEXT~ pour vous changer',
+		['drag'] = 'escorter',
+		['out_the_vehicle'] = 'sortir du véhicule',
+	--Armory
+		['get_weapon'] = 'prendre Arme',
+		['put_weapon'] = 'déposer Arme',
+		['put_stock'] = 'déposer coffre',
+		['get_stock'] = 'retirer coffre',
+		['buy_weapons'] = 'acheter Armes',
+		['armory'] = 'armurerie',
+		['open_armory'] = 'appuez sur ~INPUT_CONTEXT~ pour accéder à l\'armurerie',
+	--Vehicles
+		['vehicle_menu'] = 'véhicule',
+		['vehicle_out'] = 'il y a déja un véhicule de sorti',
+		['vehicle_spawner'] = 'appuez sur ~INPUT_CONTEXT~ pour sortir un véhicule',
+		['store_vehicle'] = 'appuez sur ~INPUT_CONTEXT~ pour ranger le véhicule',
+		['service_max'] = 'Service complet : ',
+	--Action Menu
+		['citizen_interaction'] = 'interaction citoyen',
+		['vehicle_interaction'] = 'interaction véhicule',
+		['object_spawner'] = 'placer objets',
+		['radar_spawner'] = 'placer/retirer radar', 
+
+		['id_card'] = 'carte d\'identité',
+		['search'] = 'fouiller',
+		['handcuff'] = 'menotter / Démenotter',
+		['put_in_vehicle'] = 'mettre dans véhicule',
+		['fine'] = 'Amende',
+		['no_players_nearby'] = 'aucun joueur à proximité',
+
+		['vehicle_info'] = 'infos véhicule',
+		['pick_lock'] = 'crocheter véhicule',
+		['vehicle_unlocked'] = 'véhicule ~g~déverouillé~s~',
+		['no_vehicles_nearby'] = 'aucun véhicule à proximité',
+		['traffic_interaction'] = 'Interaction Voirie',
+		['cone'] = 'plot',
+		['barrier'] = 'barrière',
+		['spikestrips'] = 'herse',
+		['box'] = 'caisse',
+		['cash'] = 'caisse',
+	--ID Card Menu
+		['name'] = 'nom : ',
+		['bac'] = 'alcoolémie : ',
+	--Body Search Menu
+		['confiscate_dirty'] = 'confisquer argent sale : $',
+		['guns_label'] = '--- Armes ---',
+		['confiscate'] = 'confisquer ',
+		['inventory_label'] = '--- Inventaire ---',
+		['confiscate_inv'] = 'confisquer x',
+
+		['traffic_offense'] = 'code de la route',
+		['minor_offense'] = 'délit mineur',
+		['average_offense'] = 'délit moyen',
+		['major_offense'] = 'délit grave',
+		['fine_total'] = 'amende : ',
+	--Vehicle Info Menu
+		['plate'] = 'N°: ',
+		['owner_unknown'] = 'propriétaire : Inconnu',
+		['owner'] = 'propriétaire : ',
+	--Weapons Menus
+		['get_weapon_menu'] = 'armurerie - Prendre Arme',
+		['put_weapon_menu'] = 'armurerie - Déposer Arme',
+		['buy_weapon_menu'] = 'armurerie - Acheter Armes',
+		['not_enough_money'] = 'vous n\'avez pas assez d\'argent',
+	--Boss Menu
+		['take_company_money'] = 'retirer argent société',
+		['deposit_money'] = 'déposer argent',
+		['amount_of_withdrawal'] = 'montant du retrait',
+		['invalid_amount'] = 'montant invalide',
+		['amount_of_deposit'] = 'montant du dépôt',
+		['open_bossmenu'] = 'appuez sur ~INPUT_CONTEXT~ pour ouvrir le menu',
+	--Misc
+		['remove_object'] = 'appuez sur ~INPUT_CONTEXT~ pour enlever l\'objet',
+		['map_blip'] = 'Commissariat',
+	--Notifications
+		['from'] = '~s~ à ~b~',
+		['you_have_confinv'] = 'vous avez confisqué ~y~x',
+		['confinv'] = '~s~ vous a confisqué ~y~x',
+		['you_have_confdm'] = 'vous avez confisqué ~y~$',
+		['confdm'] = '~s~ vous a confisqué ~y~$',
+		['you_have_confweapon'] = 'vous avez confisqué ~y~x1 ',
+		['confweapon'] = '~s~ vous a confisqué ~y~x1 ',
+		['alert_police'] = 'alerte police',
+	--Authorized Vehicles
+		['police'] = 'véhicule de patrouille 1',
+		['police2'] = 'véhicule de patrouille 2',
+		['police3'] = 'véhicule de patrouille 3',
+		['police4'] = 'véhicule civil',
+		['policeb'] = 'moto',
+		['policet'] = 'van de transport',
+
+		 --permis
+  		['codedmv'] = 'Retirer le code de la route',
+  		['codedrive'] = 'Retirer le permis de voiture',
+  		['codedrivebike'] = 'Retirer le permis de moto',
+  		['codedrivetruck'] = 'Retirer le permis de camion',
+  		['weaponlicense'] = "Retirer le permis d'armes",
+  		['dmv'] = 'code de la route',
+  		['drive'] = 'permis voiture',
+  		['drive_bike'] = 'permis moto',
+  		['drive_truck'] = 'permis camion',
+  		['weapon'] = "permis d'arme",
+		---------------- Prison ---------------
+
+  		['jail'] = 'Mettre en prison',
+  		['5_jail'] = '5 minutes en prison',
+  		['10_jail'] = '10 minutes en prison',
+  		['15_jail'] = '15 minutes en prison',
+  		['Illimité'] = 'Prison illimité',
+  		['jail_ok_2'] = "Prisonnier envoyé en prison pour 5 minutes",
+  		['jail_ok_5'] = "Prisonnier envoyé en prison pour 10 minutes",
+  		['jail_ok_10'] = "Prisonnier envoyé en prison pour 15 minutes",
+  		['unjail'] = "Libération de prison",
+  		['cop_unjail'] = "Libérer de prison",
+  		['unjail_ok'] = "Vous avez libérer un prisonnier",
+
+-------------------------------------
+
+		['invoice_amount'] = 'montant de la facture',
+		['amount_invalid'] = 'montant invalide',
+		['persofine'] = 'Amendes divers'
+}

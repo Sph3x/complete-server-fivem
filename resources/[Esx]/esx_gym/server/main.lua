@@ -12,9 +12,9 @@ AddEventHandler('esx_gym:hireBmx', function()
 	if(xPlayer.getMoney() >= 250) then
 		xPlayer.removeMoney(250)
 			
-		notification("You hired a ~g~BMX")
+		notification("Vous avez loué un ~g~BMX")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous avez pas assez d' ~r~argent")
 	end	
 end)
 
@@ -49,9 +49,9 @@ AddEventHandler('esx_gym:buyBandage', function()
 		xPlayer.removeMoney(50)
 		
 		xPlayer.addInventoryItem('gym_bandage', 1)		
-		notification("You purchased a ~g~bandage")
+		notification("Vous avez acheté un ~g~bandage")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous n'avez pas assez d'~r~argent")
 	end	
 end)
 
@@ -64,11 +64,11 @@ AddEventHandler('esx_gym:buyMembership', function()
 		xPlayer.removeMoney(800)
 		
 		xPlayer.addInventoryItem('gym_membership', 1)		
-		notification("You purchased a ~g~membership")
+		notification("Vous avez souscrit à un ~g~abonnement")
 		
 		TriggerClientEvent('esx_gym:trueMembership', source) -- true
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous avez pas assez d'~r~argent")
 	end	
 end)
 
@@ -83,9 +83,9 @@ AddEventHandler('esx_gym:buyProteinshake', function()
 		
 		xPlayer.addInventoryItem('protein_shake', 1)
 		
-		notification("You purchased a ~g~protein shake")
+		notification("Vous avez acheté de la ~g~protéine")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous n'avez pas assez d' ~r~argent")
 	end	
 end)
 
@@ -97,7 +97,7 @@ ESX.RegisterUsableItem('protein_shake', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'thirst', 350000)
 	TriggerClientEvent('esx_basicneeds:onDrink', source)
-	TriggerClientEvent('esx:showNotification', source, 'You drank a ~g~protein shake')
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez bu ~g~boisson protéine')
 
 end)
 
@@ -111,9 +111,9 @@ AddEventHandler('esx_gym:buyWater', function()
 		
 		xPlayer.addInventoryItem('water', 1)
 		
-		notification("You purchased a ~g~water")
+		notification("Vous avez acheté de l' ~g~eau")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous n'avez pas assez d' ~r~argent")
 	end		
 end)
 
@@ -127,9 +127,9 @@ AddEventHandler('esx_gym:buySportlunch', function()
 		
 		xPlayer.addInventoryItem('sportlunch', 1)
 		
-		notification("You purchased a ~g~sportlunch")
+		notification("Vous avez acheté un ~g~repas de sport")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous n'avez pas assez d' ~r~argent")
 	end		
 end)
 
@@ -141,7 +141,7 @@ ESX.RegisterUsableItem('sportlunch', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 350000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, 'You ate a ~g~sportlunch')
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez mangé ~g~sportlunch')
 
 end)
 
@@ -155,9 +155,9 @@ AddEventHandler('esx_gym:buyPowerade', function()
 		
 		xPlayer.addInventoryItem('powerade', 1)
 		
-		notification("You purchased a ~g~powerade")
+		notification("Vous avez acheté un ~g~powerade")
 	else
-		notification("You do not have enough ~r~money")
+		notification("Vous n'avez pas assez ~r~argent")
 	end		
 end)
 
@@ -169,7 +169,7 @@ ESX.RegisterUsableItem('powerade', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'thirst', 700000)
 	TriggerClientEvent('esx_basicneeds:onDrink', source)
-	TriggerClientEvent('esx:showNotification', source, 'You drank a ~g~powerade')
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez bu ~g~powerade')
 
 end)
 

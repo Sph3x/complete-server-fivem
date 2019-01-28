@@ -3,6 +3,10 @@ local TeleportFromTo = {
 		positionFrom = { ['x'] = 1013.1706542969, ['y'] = 2905.4699707031, ['z'] = 41.374877929688, nom = "Entré dans le Bunker"},
 		positionTo = { ['x'] = 1009.8477172852, ['y'] = 2905.8864746094, ['z'] = 34.620891571045, nom = "Sortir du Bunker"},
 	},	
+	["Courtroom2"] = {
+		positionFrom = { ['x'] = 1005.8255, ['y'] = -114.7631, ['z'] = 72.9736, nom = "Entré dans le Qg"},
+		positionTo = { ['x'] = 997.0119, ['y'] = -3158.1601, ['z'] = -39.9071, nom = "Sortir du Qg"},
+	},
 }
 
 Drawing = setmetatable({}, Drawing)

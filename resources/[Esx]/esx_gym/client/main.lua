@@ -69,7 +69,7 @@ AddEventHandler('esx_gym:useBandage', function()
 	SetEntityHealth(playerPed, newHealth)
 	--SetEntityHealth(playerPed, maxHealth) -- Give them full health by one bandage
 	
-	ESX.ShowNotification("You used a ~g~bandage")
+	ESX.ShowNotification("Vous avez utilisé un a ~g~bandage")
 end)
 
 RegisterNetEvent('esx_gym:trueMembership')
@@ -187,11 +187,11 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, rentbike[k].x, rentbike[k].y, rentbike[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to hire a ~b~bike')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour louer un ~b~bike')
 				
 				if IsControlJustPressed(0, Keys['E']) then -- "E"
 					if IsPedInAnyVehicle(GetPlayerPed(-1)) then
-						ESX.ShowNotification("You already have a ~r~vehicle")
+						ESX.ShowNotification("Vous avez déjà un ~r~vehicle")
 					else
 						OpenBikeMenu()
 					end
@@ -211,7 +211,7 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, gym[k].x, gym[k].y, gym[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to open the ~b~gym~w~ menu')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le ~b~gym~w~ menu')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					OpenGymMenu()
@@ -231,13 +231,13 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, arms[k].x, arms[k].y, arms[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to exercise your ~g~arms')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour travailler vos ~g~bras')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					if training == false then
 					
 						TriggerServerEvent('esx_gym:checkChip')
-						ESX.ShowNotification("Preparing the ~g~exersice~w~...")
+						ESX.ShowNotification("Préparation ~g~sportif~w~...")
 						Citizen.Wait(1000)					
 					
 						if membership == true then
@@ -245,16 +245,16 @@ Citizen.CreateThread(function()
 							TaskStartScenarioInPlace(playerPed, "world_human_muscle_free_weights", 0, true)
 							Citizen.Wait(30000)
 							ClearPedTasksImmediately(playerPed)
-							ESX.ShowNotification("You need to rest ~r~60 seconds ~w~before doing another exercise.")
+							ESX.ShowNotification("Vous avez besoin d'un repos de ~r~60 secondes ~w~avant de faire un autre exercice.")
 							
 							--TriggerServerEvent('esx_gym:trainArms') ## COMING SOON...
 							
 							training = true
 						elseif membership == false then
-							ESX.ShowNotification("You need a membership in order to do a ~r~exercise")
+							ESX.ShowNotification("Vous devez souscrire à un abonnement pour pratiquer des ~r~exercises")
 						end
 					elseif training == true then
-						ESX.ShowNotification("You need to rest...")
+						ESX.ShowNotification("Vous avez besoin de faire une pause...")
 						
 						resting = true
 						
@@ -276,13 +276,13 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, chins[k].x, chins[k].y, chins[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to do some ~g~pull-ups')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour faire des ~g~tractions')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					if training == false then
 					
 						TriggerServerEvent('esx_gym:checkChip')
-						ESX.ShowNotification("Preparing the ~g~exersice~w~...")
+						ESX.ShowNotification("Préparation ~g~sportif~w~...")
 						Citizen.Wait(1000)					
 					
 						if membership == true then
@@ -290,16 +290,16 @@ Citizen.CreateThread(function()
 							TaskStartScenarioInPlace(playerPed, "prop_human_muscle_chin_ups", 0, true)
 							Citizen.Wait(30000)
 							ClearPedTasksImmediately(playerPed)
-							ESX.ShowNotification("You need to rest ~r~60 seconds ~w~before doing another exercise.")
+							ESX.ShowNotification("Vous avez besoin d'un repos de ~r~60 secondes ~w~avant de faire un autre exercice.")
 							
 							--TriggerServerEvent('esx_gym:trainChins') ## COMING SOON...
 							
 							training = true
 						elseif membership == false then
-							ESX.ShowNotification("You need a membership in order to do a ~r~exercise")
+							ESX.ShowNotification("Vous devez souscrire à un abonnement pour pratiquer des ~r~exercises")
 						end
 					elseif training == true then
-						ESX.ShowNotification("You need to rest...")
+						ESX.ShowNotification("Vous avez besoin de faire une pause...")
 						
 						resting = true
 						
@@ -321,13 +321,13 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, pushup[k].x, pushup[k].y, pushup[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to do some ~g~pushups')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour faire quelques ~g~pompes')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					if training == false then
 					
 						TriggerServerEvent('esx_gym:checkChip')
-						ESX.ShowNotification("Preparing the ~g~exersice~w~...")
+						ESX.ShowNotification("Préparation ~g~sportif~w~...")
 						Citizen.Wait(1000)					
 					
 						if membership == true then				
@@ -335,16 +335,16 @@ Citizen.CreateThread(function()
 							TaskStartScenarioInPlace(playerPed, "world_human_push_ups", 0, true)
 							Citizen.Wait(30000)
 							ClearPedTasksImmediately(playerPed)
-							ESX.ShowNotification("You need to rest ~r~60 seconds ~w~before doing another exercise.")
+							ESX.ShowNotification("Vous avez besoin d'un repos de ~r~60 secondes ~w~avant de faire un autre exercice.")
 						
 							--TriggerServerEvent('esx_gym:trainPushups') ## COMING SOON...
 							
 							training = true
 						elseif membership == false then
-							ESX.ShowNotification("You need a membership in order to do a ~r~exercise")
+							ESX.ShowNotification("Vous devez souscrire à un abonnement pour pratiquer des ~r~exercises")
 						end							
 					elseif training == true then
-						ESX.ShowNotification("You need to rest...")
+						ESX.ShowNotification("Vous avez besoin de faire une pause...")
 						
 						resting = true
 						
@@ -366,13 +366,13 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, yoga[k].x, yoga[k].y, yoga[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to do some ~g~yoga')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour faire du ~g~yoga')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					if training == false then
 					
 						TriggerServerEvent('esx_gym:checkChip')
-						ESX.ShowNotification("Preparing the ~g~exersice~w~...")
+						ESX.ShowNotification("Préparation ~g~sportif~w~...")
 						Citizen.Wait(1000)					
 					
 						if membership == true then	
@@ -380,16 +380,16 @@ Citizen.CreateThread(function()
 							TaskStartScenarioInPlace(playerPed, "world_human_yoga", 0, true)
 							Citizen.Wait(30000)
 							ClearPedTasksImmediately(playerPed)
-							ESX.ShowNotification("You need to rest ~r~60 seconds ~w~before doing another exercise.")
+							ESX.ShowNotification("Vous avez besoin d'un repos de ~r~60 secondes ~w~avant de faire un autre exercice.")
 						
 							--TriggerServerEvent('esx_gym:trainYoga') ## COMING SOON...
 							
 							training = true
 						elseif membership == false then
-							ESX.ShowNotification("You need a membership in order to do a ~r~exercise")
+							ESX.ShowNotification("Vous devez souscrire à un abonnement pour pratiquer des ~r~exercises")
 						end
 					elseif training == true then
-						ESX.ShowNotification("You need to rest...")
+						ESX.ShowNotification("Vous avez besoin de faire une pause...")
 						
 						resting = true
 						
@@ -411,13 +411,13 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, situps[k].x, situps[k].y, situps[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Press ~INPUT_CONTEXT~ to do some ~g~pushups')
+				hintToDisplay('Appuyez sur ~INPUT_CONTEXT~ pour faire quelques ~g~pompes')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					if training == false then
 
 						TriggerServerEvent('esx_gym:checkChip')
-						ESX.ShowNotification("Preparing the ~g~exersice~w~...")
+						ESX.ShowNotification("Préparation ~g~sportif~w~...")
 						Citizen.Wait(1000)					
 					
 						if membership == true then	
@@ -425,16 +425,16 @@ Citizen.CreateThread(function()
 							TaskStartScenarioInPlace(playerPed, "world_human_sit_ups", 0, true)
 							Citizen.Wait(30000)
 							ClearPedTasksImmediately(playerPed)
-							ESX.ShowNotification("You need to rest ~r~60 seconds ~w~before doing another exercise.")
+							ESX.ShowNotification("Vous avez besoin d'un repos de ~r~60 secondes ~w~avant de faire un autre exercice.")
 						
 							--TriggerServerEvent('esx_gym:trainSitups') ## COMING SOON...
 							
 							training = true
 						elseif membership == false then
-							ESX.ShowNotification("You need a membership in order to do a ~r~exercise")
+							ESX.ShowNotification("Vous devez souscrire à un abonnement pour pratiquer des ~r~exercises")
 						end
 					elseif training == true then
-						ESX.ShowNotification("You need to rest...")
+						ESX.ShowNotification("Vous avez besoin de faire une pause...")
 						
 						resting = true
 						
@@ -448,7 +448,7 @@ end)
 
 function CheckTraining()
 	if resting == true then
-		ESX.ShowNotification("You are resting...")
+		ESX.ShowNotification("Vous êtes en train de vous reposer...")
 		
 		resting = false
 		Citizen.Wait(60000)
@@ -456,7 +456,7 @@ function CheckTraining()
 	end
 	
 	if resting == false then
-		ESX.ShowNotification("You can now exercise again...")
+		ESX.ShowNotification("Vous pouvez reprendre la muscu")
 	end
 end
 
@@ -479,7 +479,7 @@ function OpenGymMenu()
             elseif data.current.value == 'hours' then
 				ESX.UI.Menu.CloseAll()
 				
-				ESX.ShowNotification("We are open ~g~24~w~ hours/ day. Welcome!")
+				ESX.ShowNotification("Nous sommes ouvert ~g~24~w~ h/24. Bienvenue !")
             elseif data.current.value == 'ship' then
 				OpenGymShipMenu()
             end
@@ -496,11 +496,11 @@ function OpenGymShopMenu()
     ESX.UI.Menu.Open(
         'default', GetCurrentResourceName(), 'gym_shop_menu',
         {
-            title    = 'Gym - Shop',
+            title    = 'Gym - Boutique',
             elements = {
-				{label = 'Protein Shake ($6)', value = 'protein_shake'},
-				{label = 'Water ($1)', value = 'water'},
-				{label = 'Sportlunch ($2)', value = 'sportlunch'},
+				{label = 'Boisson protéinée ($6)', value = 'protein_shake'},
+				{label = 'Eau ($1)', value = 'water'},
+				{label = 'Repas sportif ($2)', value = 'sportlunch'},
 				{label = 'Powerade ($4)', value = 'powerade'},
 				{label = 'Bandage ($50)', value = 'bandage'},
             }
@@ -530,9 +530,9 @@ function OpenGymShipMenu()
     ESX.UI.Menu.Open(
         'default', GetCurrentResourceName(), 'gym_ship_menu',
         {
-            title    = 'Gym - Membership',
+            title    = 'Gym - Abonnement',
             elements = {
-				{label = 'Membership ($800)', value = 'membership'},
+				{label = 'Abonnement ($800)', value = 'membership'},
             }
         },
         function(data, menu)
@@ -554,7 +554,7 @@ function OpenBikeMenu()
     ESX.UI.Menu.Open(
         'default', GetCurrentResourceName(), 'bike_menu',
         {
-            title    = 'Hire a bike',
+            title    = 'Louer un VTT',
             elements = {
 				{label = 'BMX ($250)', value = 'bmx'},
 				{label = 'Cruiser ($300)', value = 'cruiser'},

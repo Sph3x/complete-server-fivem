@@ -66,7 +66,7 @@ var config =
     */
     loadingMessages:
     [
-        "Bienvenue sur TaLife Roleplay",
+        "Bienvenue sur Dawnstar",
         "Connexion en cours...",
         "Connexion en cours...",
         "Connexion en cours...",
@@ -99,7 +99,7 @@ var config =
     */
     music:
     [
-        "ro6UrnE-W9k",
+        "HS7gPuNS-R8",
         "fhrja1RDmWw"
     ],
  

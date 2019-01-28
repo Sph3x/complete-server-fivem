@@ -1,0 +1,179 @@
+body{
+  margin:0;
+  padding: 0;
+}
+
+#cursor {
+    position: absolute;
+    z-index: 99999999;
+    display: none;
+}
+
+#identity{
+  position: absolute;
+  width: 400px;
+  height: 274px;
+  top:50%;
+  transform:translateY(-50%);
+  left:50%;
+  transform:translateX(-50%);
+  font-weight:700;
+  font-size: 0.9em;
+  display: none;
+}
+
+.identity-female{
+  background-image: url('carteV3_f.png'); 
+}
+
+.identity-male {
+  background-image: url('carteV3_m.png');
+}
+
+#lastname{
+    position: absolute;
+    top: 54px;
+    left: 151px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#firstname{
+    position: absolute;
+    top: 54px;
+    left: 251px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#dateofbirth{
+  position: absolute;
+    top: 82px;
+    left: 151px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#sex{
+  position: absolute;
+    top: 82px;
+    left: 251px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#height{
+  position: absolute;
+    top: 107px;
+    left: 151px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#jobs{
+  position: absolute;
+    top: 107px;
+    left: 251px;
+    width: 95px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#cardNumber{
+    display: block;
+    position: absolute;
+    top: 220px;
+    left: 107px;
+    right: 34px;
+    bottom: 28px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    font-family: monospace;
+    letter-spacing: -2px;
+    text-align: center;
+}
+
+#register{
+  background-color: rgba(44, 62, 80,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 550px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#registerFrom{
+  background-color: white;
+    width: 550px;
+  padding: 20px;
+}
+#register h1 {
+  background-color: black;
+  color: white;
+  display: block;
+  padding: 10px 50px;
+  text-align: center;
+
+}
+#register .champ{
+  margin-bottom: 6px;
+}
+
+.champ label{
+  display: block;
+  color: black;
+  background-color: white;
+  height: 28px;
+  line-height: 28px;
+  font-size: 24px;
+  padding: 4px 14px;
+}
+.champ input[type="number"],
+.champ input[type="text"]{
+  display: block;
+  margin-left: 22px;
+  height: 38px;
+  width: 508px;
+  padding-left: 10px;
+  background-color: lightgray;
+  border: 1px solid black;
+  font-size: 22px; 
+}
+
+.champ .lcheck{
+  display: inline-block;
+}
+
+
+.champ input[type="radio"]{
+  height: 16px;
+  width: 16px;
+}
+
+button{
+  background-color: lightgray;
+  color:black;
+  font-weight: 700;
+  margin: 15px 50px;
+  padding: 10px 20px;
+  border: 1px solid darkgray;
+  float: right;
+}
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
